@@ -16,18 +16,22 @@ import { isLogged } from './src/middlewares/middleware';
 class App {
   constructor() {
     this.app = express();
+    this.views();
     this.middlewares();
     this.routes();
+  }
+
+  views() {
+    this.app.engine('handlebars', exphbs.engine());
+    this.app.set('views', path.resolve(__dirname, 'src', 'views'));
+    this.app.set('view engine', 'handlebars');
+    this.app.use(express.static(path.resolve(__dirname, 'public')));
   }
 
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(flash());
-    this.app.engine('handlebars', exphbs.engine());
-    this.app.set('views', path.resolve(__dirname, 'src', 'views'));
-    this.app.set('view', 'handlebars');
-    this.app.use(express.static(path.resolve(__dirname, 'src', 'public')));
     this.app.use(sessionOptions);
     this.app.use(isLogged);
   }

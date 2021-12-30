@@ -1,6 +1,6 @@
 class HomeController {
   index(req, res) {
-    res.send('ola mundo!');
+    res.render('home');
   }
 }
 
