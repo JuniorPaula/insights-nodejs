@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import express from 'express';
+
+dotenv.config();
 
 import homeRoutes from './src/routes/homeRoutes';
 
