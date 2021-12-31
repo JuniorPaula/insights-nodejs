@@ -3,6 +3,10 @@
 :root {
   --color-title: #0f1419;
   --primary-color: #1d9bf0;
+  --message-color-error: #EF5350;
+  --message-border-error: #E53935;
+  --message-color-success: #08864b;
+  --message-border-success: #124d2c;
 }
 
 * {
@@ -51,6 +55,28 @@
 .container {
   min-height: 60vh;
   padding: 2em;
+}
+
+/***
+**** MENSAGES **/
+.message-error {
+  padding: 1em;
+  background-color: var(--message-color-error);
+  border: 1px solid var(--message-border-error);
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 2em;
+  width: 650px;
+}
+
+.message-success {
+  padding: 1em;
+  background-color: var(--message-color-success);
+  border: 1px solid var(--message-border-success);
+  color: #fff;
+  text-align: center;
+  margin: 0 auto 2em;
+  width: 650px;
 }
 
 /***
