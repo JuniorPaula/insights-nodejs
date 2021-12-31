@@ -7,6 +7,8 @@ const exphbs = require('express-handlebars');
 
 dotenv.config();
 
+import './src/database';
+
 import homeRoutes from './src/routes/homeRoutes';
 
 import sessionOptions from './src/config/sessions';
