@@ -10,6 +10,7 @@ dotenv.config();
 import './src/database';
 
 import homeRoutes from './src/routes/homeRoutes';
+import authRoutes from './src/routes/authRoutes';
 
 import sessionOptions from './src/config/sessions';
 
@@ -40,6 +41,7 @@ class App {
 
   routes() {
     this.app.use('/', homeRoutes);
+    this.app.use('/', authRoutes);
   }
 }
 
