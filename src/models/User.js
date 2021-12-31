@@ -14,4 +14,8 @@ export default class User extends Model {
     );
     return this;
   }
+
+  static associate(models) {
+    return this.hasMany(models.Insight, { foreignKey: 'user_id' });
+  }
 }
