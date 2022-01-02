@@ -25,7 +25,13 @@ class HomeController {
 
       const userInsights = insights.map((result) => result.dataValues);
 
-      res.render('insights/dashboard', { userInsights });
+      let emptyInsights = false;
+
+      if (userInsights.length === 0) {
+        emptyInsights = true;
+      }
+
+      res.render('insights/dashboard', { userInsights, emptyInsights });
     } catch (e) {
       console.log(e);
     }
@@ -56,6 +62,22 @@ class HomeController {
 
       await Insight.create(insight);
       req.flash('success', 'Insight criado com sucesso!');
+      req.session.save(() => {
+        return res.redirect('dashboard');
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  /** metodo responsável por deletar um insight */
+  async delete(req, res) {
+    try {
+      const { id } = req.body;
+      const { userId } = req.session;
+
+      await Insight.destroy({ where: { id: id, user_id: userId } });
+      req.flash('success', 'Insight removido com sucesso!');
       req.session.save(() => {
         return res.redirect('dashboard');
       });

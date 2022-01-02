@@ -10,7 +10,7 @@
         <span class="label">{{this.title}}</span>
         <span class="actions">
           <a href="/" class="btn">Editar</a>
-          <form action="/" method="POST">
+          <form action="/delete" method="POST">
             <input type="hidden" name="id" value="{{this.id}}">
             <input type="submit" value="Excluir" class="btn delete">
           </form>
@@ -18,4 +18,7 @@
       </li>
     {{/each}}
   </ul>
+  {{#if emptyInsights}}
+    <p>Ainda não existem Insights seus...</p>
+  {{/if}}
 </div>
