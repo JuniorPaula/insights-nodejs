@@ -5,6 +5,7 @@ export default class Insight extends Model {
     super.init(
       {
         title: Sequelize.STRING,
+        user_id: Sequelize.INTEGER,
       },
       {
         sequelize,

@@ -9,5 +9,6 @@ const router = new Router();
 router.get('/', homeController.index);
 router.get('/dashboard', checkIsLogged, homeController.dashboard);
 router.get('/add', checkIsLogged, homeController.createInsights);
+router.post('/add', checkIsLogged, homeController.store);
 
 export default router;
