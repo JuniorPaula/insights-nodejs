@@ -190,6 +190,85 @@ form input[type='submit'],
   margin-left: .2em;
 }
 
+/***
+**** HOME **/
+.home-header {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-header h1 {
+  margin-bottom: 1em;
+}
+
+.home-header span {
+  color: var(--primary-color);
+}
+
+.home-header p,
+.home-header form {
+  margin-bottom: 1.2em;
+}
+
+.home-header input {
+  border: 1px solid var(--primary-color);
+  padding: .7em;
+  margin-right: 1em;
+  border-radius: 15px;
+}
+
+.home-header input[type="text"] {
+  width: 60%;
+}
+
+.order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto 1em;
+}
+
+.order-container span {
+  font-weight: bold;
+}
+
+.order-container form {
+  margin: 0;
+}
+
+.order-container button {
+  margin-bottom: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.order-container button,
+.order-container i,
+.order-container a {
+  margin:  0 6px;
+}
+
+.insights-container figure {
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
+  padding: .5em;
+  max-width: 50%;
+  margin: 0 auto 1em;
+}
+
+.insights-container blockquote {
+  font-style: italic;
+  font-size: 1.3em;
+  margin-bottom: .4em;
+}
+
+.insights-container span {
+  color: var(--primary-color);
+  font-size: 12px;
+}
 
 /***
 **** FOOTER **/
