@@ -2,9 +2,20 @@ import Insight from '../models/Insight';
 import User from '../models/User';
 
 class HomeController {
-  index(req, res) {
-    res.render('home');
-    console.log(req.session);
+  async index(req, res) {
+    try {
+      const insightsData = await Insight.findAll({
+        include: 'users',
+      });
+
+      const insights = insightsData.map((result) =>
+        result.get({ plain: true }),
+      );
+
+      res.render('home', { insights });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async dashboard(req, res) {
