@@ -11,6 +11,37 @@ class AuthController {
     res.render('auth/register');
   }
 
+  async authLogin(req, res) {
+    const { email, password } = req.body;
+
+    /** verificar se o usuário existe */
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      req.flash('error', 'Usuário não encontrado!');
+      req.session.save(() => {
+        return res.render('auth/login');
+      });
+
+      return;
+    }
+
+    /** verificar se as senhas conferem */
+    const passwordMatch = bcrypt.compareSync(password, user.password);
+
+    if (!passwordMatch) {
+      req.flash('error', 'Senha inválida!');
+      return res.render('auth/login');
+    }
+
+    // salvar a sessão
+    req.session.userId = user.id;
+
+    req.flash('success', 'Autenticação realizada com sucesso!');
+    req.session.save(() => {
+      return res.redirect('/');
+    });
+  }
+
   async authRegister(req, res) {
     const { name, email, password, confirmpassword } = req.body;
 
