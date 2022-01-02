@@ -78,6 +78,12 @@ class AuthController {
       console.log(e);
     }
   }
+
+  /** método responsável por fazer o logout do usuário */
+  logout(req, res) {
+    req.session.destroy();
+    res.redirect('/login');
+  }
 }
 
 export default new AuthController();
