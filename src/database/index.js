@@ -8,3 +8,6 @@ const models = [User, Insight];
 const connection = new Sequelize(databaseConfig);
 
 models.forEach((model) => model.init(connection));
+models.forEach(
+  (model) => model.associate && model.associate(connection.models),
+);

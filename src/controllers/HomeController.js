@@ -1,4 +1,5 @@
 import Insight from '../models/Insight';
+import User from '../models/User';
 
 class HomeController {
   index(req, res) {
@@ -6,8 +7,28 @@ class HomeController {
     console.log(req.session);
   }
 
-  dashboard(req, res) {
-    res.render('insights/dashboard');
+  async dashboard(req, res) {
+    try {
+      const { userId } = req.session;
+
+      const user = await User.findByPk(userId, {
+        include: { association: 'insights' },
+      });
+      const insights = await Insight.findAll({ where: { user_id: userId } });
+
+      if (!user) {
+        req.flash('error', 'Usuário não existe!');
+        req.session.save(() => {
+          return res.redirect('/login');
+        });
+      }
+
+      const userInsights = insights.map((result) => result.dataValues);
+
+      res.render('insights/dashboard', { userInsights });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   createInsights(req, res) {

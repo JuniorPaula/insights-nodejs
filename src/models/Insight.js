@@ -15,6 +15,6 @@ export default class Insight extends Model {
   }
 
   static associate(models) {
-    return this.belongsTo(models.User, { foreignKey: 'user_id' });
+    return this.belongsTo(models.User, { foreignKey: 'user_id', as: 'users' });
   }
 }
