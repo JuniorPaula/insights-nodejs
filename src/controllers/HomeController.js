@@ -41,6 +41,37 @@ class HomeController {
     res.render('insights/create');
   }
 
+  /** método responsável por renderizar a view de editar o insight */
+  async updateInsight(req, res) {
+    try {
+      const { id } = req.params;
+
+      const insight = await Insight.findOne({ where: { id }, raw: true });
+
+      res.render('insights/edit', { insight });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  /** método responsável por atualizar o insight */
+  async update(req, res) {
+    try {
+      const { id, title } = req.body;
+
+      const insight = { title };
+
+      await Insight.update(insight, { where: { id } });
+
+      req.flash('success', 'Insight editado com sucesso!');
+      req.session.save(() => {
+        return res.redirect('dashboard');
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   /** método responsável por criar um insight */
   async store(req, res) {
     try {

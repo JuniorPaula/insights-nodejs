@@ -1,0 +1,12 @@
+<div class="insights-form--container">
+  <a href="/dashboard">Voltar</a>
+  <h2>Edite seu Insight</h2>
+  <form action="/edit" method="POST">
+    <input type="hidden" name="id" value="{{insight.id}}">
+    <div class="form-control">
+      <label for="title">Título:</label>
+      <input type="text" name="title" value="{{insight.title}}" placeholder="No que você está pensando ?">
+    </div>
+      <input type="submit" value="Editar insight">
+  </form>
+</div>
