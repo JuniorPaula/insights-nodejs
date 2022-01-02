@@ -65,7 +65,10 @@ class AuthController {
 
     /** criar usuário no sistema */
     try {
-      await User.create(user);
+      const createdUser = await User.create(user);
+
+      // salvar a sessão
+      req.session.userId = createdUser.id;
 
       req.flash('success', 'Cadastro realizado com sucesso!');
       req.session.save(() => {
