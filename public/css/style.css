@@ -133,6 +133,22 @@ form input[type='submit'],
   cursor: pointer;
 }
 
+/***
+**** CREATE / EDIT FORM **/
+.insights-form--container a {
+ color: var(--primary-color);
+}
+
+.insights-form--container h2 {
+  margin: 1em 0;
+  padding: .3em;
+}
+
+.insights-form--container form {
+  max-width: 30%;
+  margin-top: 1.5em;
+}
+
 
 /***
 **** FOOTER **/
