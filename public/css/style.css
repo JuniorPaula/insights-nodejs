@@ -18,6 +18,14 @@
   color: var(--color-title);
 }
 
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
 /***
 **** NAVBAR **/
 #logo img {
@@ -149,6 +157,38 @@ form input[type='submit'],
   margin-top: 1.5em;
 }
 
+/***
+**** DASHBOARD **/
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.title-container h2 {
+  padding: 10px;
+}
+
+.dashboard {
+  margin-bottom: 1.5em;
+}
+
+.dashboard li {
+  display: flex;
+  border-bottom: 1px solid var(--primary-color);
+  padding: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard .actions {
+  display: flex;
+}
+
+.dashboard .actions .btn.delete {
+  background-color: var(--message-color-error);
+  margin-left: .2em;
+}
 
 /***
 **** FOOTER **/
