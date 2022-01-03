@@ -1,11 +1,29 @@
 import Insight from '../models/Insight';
 import User from '../models/User';
+import { Op } from 'sequelize';
 
 class HomeController {
   async index(req, res) {
+    let search = '';
+    let order = 'DESC';
+
+    if (req.query.search) {
+      search = req.query.search;
+    }
+
+    if (req.query.order === 'old') {
+      order = 'ASC';
+    } else {
+      order = 'DESC';
+    }
+
     try {
       const insightsData = await Insight.findAll({
         include: 'users',
+        where: {
+          title: { [Op.like]: `%${search}%` },
+        },
+        order: [['created_at', order]],
       });
 
       const insights = insightsData.map((result) =>
